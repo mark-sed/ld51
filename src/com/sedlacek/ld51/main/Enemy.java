@@ -52,7 +52,7 @@ public class Enemy {
 		for(int i = col-1; i<= col+1; ++i) {
 			for(int j = row-1; j<= row+1; ++j) {
 				if(j == row && i == col) continue;
-				shipAm+=Game.level.map[i][j].getOccupier() != null ? 1 : 0;
+				shipAm+=Game.level.map[i][j].getOccupier() != null && Game.level.map[i][j].getStatus() == Status.HOSTILE ? 1 : 0;
 			}
 		}
 		return !(shipAm == 0 || shipAm == 8);

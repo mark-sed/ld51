@@ -254,17 +254,28 @@ public class Game extends Canvas implements Runnable{
 			g.setFont(new Font("DorFont03", Font.BOLD, 30*Config.SIZE_MULT));
 			long minutes = (runtime / 1000) / 60;
 			long sec = (runtime / 1000) % 60;
-			if(!won) {
-				g.setColor(new Color(135, 3, 3));
-				g.drawString("DEFEAT!", Config.WIDTH/2-g.getFontMetrics().stringWidth("DEFEAT!")/2, Config.HEIGHT/2-6*Config.SIZE_MULT);
-			}else {
-				g.setColor(new Color(0, 193, 196));
-				g.drawString("VICTORY!", Config.WIDTH/2-g.getFontMetrics().stringWidth("VICTORY!")/2, Config.HEIGHT/2-6*Config.SIZE_MULT);
+			if(inTutorial) {
+				g.setFont(new Font("DorFont03", Font.BOLD, 22*Config.SIZE_MULT));
+				g.setColor(new Color(58, 252, 94));
+				g.drawString("TUTORIAL FINISHED.", Config.WIDTH/2-g.getFontMetrics().stringWidth("TUTORIAL FINISHED.")/2, Config.HEIGHT/2-6*Config.SIZE_MULT);
+			
+			}
+			else {
+				if(!won) {
+					g.setColor(new Color(135, 3, 3));
+					g.drawString("DEFEAT!", Config.WIDTH/2-g.getFontMetrics().stringWidth("DEFEAT!")/2, Config.HEIGHT/2-6*Config.SIZE_MULT);
+				}else {
+					g.setColor(new Color(0, 193, 196));
+					g.drawString("VICTORY!", Config.WIDTH/2-g.getFontMetrics().stringWidth("VICTORY!")/2, Config.HEIGHT/2-6*Config.SIZE_MULT);
+				}
 			}
 			g.setColor(new Color(180,180,180));
 			g.setFont(new Font("DorFont03", Font.PLAIN, 7*Config.SIZE_MULT));
-			g.drawString("Press [Enter] to restart.", Config.WIDTH/2-g.getFontMetrics().stringWidth("Press [Enter] to restart.")/2, Config.HEIGHT/2+4*Config.SIZE_MULT);
-		
+			if(!inTutorial)
+				g.drawString("Press [Enter] to restart.", Config.WIDTH/2-g.getFontMetrics().stringWidth("Press [Enter] to restart.")/2, Config.HEIGHT/2+4*Config.SIZE_MULT);
+			else
+				g.drawString("Press [Enter] to start a real match.", Config.WIDTH/2-g.getFontMetrics().stringWidth("Press [Enter] to start a real match.")/2, Config.HEIGHT/2+4*Config.SIZE_MULT);
+
 			g.setColor(new Color(220,220,220));
 			g.setFont(new Font("DorFont03", Font.PLAIN, 9*Config.SIZE_MULT));
 			g.drawString(minutes+" min "+sec+" s", Config.WIDTH/2-g.getFontMetrics().stringWidth(minutes+"min "+sec+"s")/2, 20*Config.SIZE_MULT);
