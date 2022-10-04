@@ -134,7 +134,10 @@ public class Player {
 	
 	public boolean canMove(GameObject s, int col, int row) {
 		int moves = Math.abs(s.getCol()-col)+Math.abs(s.getRow()-row);
-		return moves <= fuel && Game.level.map[col][row].getOccupier() == null;
+		if(s instanceof Ship)
+			return ((Ship)s).getSpeed()*speedMult > 0 && moves <= fuel && Game.level.map[col][row].getOccupier() == null;
+		else
+			return moves <= fuel && Game.level.map[col][row].getOccupier() == null;
 	}
 	
 	public boolean canSee(Entity s, int col, int row) {

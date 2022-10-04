@@ -17,9 +17,10 @@ public abstract class Opportunity {
 	
 	public static Opportunity randomOpp() {
 		ArrayList<Integer> uids = new ArrayList<Integer>();
+		/* Too strong
 		if(Scanner.canBeCreated()) {
 			uids.add(Scanner.UID);
-		}
+		}*/
 		if(BlackMarketOpportunity.canBeCreated()) {
 			uids.add(BlackMarketOpportunity.UID);
 		}
